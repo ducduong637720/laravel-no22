@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/posts/show', function () {
+    return view('frontend.posts.show');
+})->name('frontend.posts.show');
+
+
 Route::prefix('backend')->name('backend.')->middleware([])->group(function(){
     Route::get('dashboard', function () {
         return view('backend.dashboard');
@@ -49,18 +54,18 @@ Route::prefix('backend')->name('backend.')->middleware([])->group(function(){
     Route::prefix('users')->name('users.')->group(function(){
         Route::get('/list', function () {
             return view('backend.users.index');
-        })->name('list');
+        })->name('index');
         Route::get('/(id)', function ($id) {
             return view('backend.users.show ');
         })->name('show');
         Route::get('/create', function () {
-            return view('create');
+            return view('backend.users.create');
         })->name('create');
         Route::post('/store', function () {
             return redirect()->route('backend.users.index');
         })->name('store');
-        Route::get('/edit/(id)', function ($id) {
-            return view('edit');
+        Route::get('/edit', function () {
+            return view('backend.users.edit');
         })->name('edit');
         Route::put('/update/(id)', function ($id) {
             return redirect()->route('backend.users.index');
