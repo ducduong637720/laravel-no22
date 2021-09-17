@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('backend/dashboard');
 })->name('home');
 
 Route::get('/posts/show', function () {
@@ -75,4 +75,27 @@ Route::prefix('backend')->name('backend.')->middleware([])->group(function(){
         })->name('delete');
     });
     
+    Route::prefix('posts')->name('posts.')->group(function(){
+        Route::get('/list', function () {
+            return view('backend.posts.index');
+        })->name('index');
+        Route::get('/(id)', function ($id) {
+            return view('backend.posts.show ');
+        })->name('show');
+        Route::get('/create', function () {
+            return view('backend.posts.create');
+        })->name('create');
+        Route::post('/store', function () {
+            return redirect()->route('backend.posts.index');
+        })->name('store');
+        Route::get('/edit', function () {
+            return view('backend.posts.edit');
+        })->name('edit');
+        Route::put('/update/(id)', function ($id) {
+            return redirect()->route('backend.posts.index');
+        })->name('update');
+        Route::get('/delete', function () {
+            return view('backend posts delete');
+        })->name('delete');
+    });
 });
