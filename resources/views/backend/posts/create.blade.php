@@ -27,7 +27,7 @@
             <h3>Tiêu đề</h3>
             <input type="text" placeholder="Nhập tên...." style="width:100%">
         </div>
-        @include('backend/components/summernote')
+        @include('backend.components.summernote')
         <!-- /.card-header -->
         <button type="button" class="btn btn-success" style="width:10%;">Lưu</button>
       </div>

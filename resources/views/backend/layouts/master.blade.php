@@ -52,5 +52,8 @@
 
 @include('backend.includes.script-base')
 @yield('script')
+@stack('stack-scripts')
+
+
 </body>
 </html>
