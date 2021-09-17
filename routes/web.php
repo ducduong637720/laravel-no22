@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('backend/posts/list');
+    return view('welcome');
 })->name('home');
 
 Route::get('/posts/show', function () {
