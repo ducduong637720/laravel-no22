@@ -25,7 +25,7 @@
       <div class="card">
         <div class="card-header">
           @include('backend.components.btn', [
-            'href' => route('backend.posts.create'),
+            'href' => route('backend.posts.add'),
             'type' => 'success',
             'content' => 'Tạo mới bài viết'
           ])

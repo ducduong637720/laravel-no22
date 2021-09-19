@@ -1,6 +1,9 @@
 <?php
-
+use GuzzleHttp\Middleware;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,19 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
+// Route::get('/',[\App\Http\Controllers\HomeController::class,'index']);
+// Route::get('/', [HomeController::class,'index']);
+Route::get('/','HomeController@index');
 
 Route::get('/posts/show', function () {
     return view('frontend.posts.show');
 })->name('frontend.posts.show');
 
 
-Route::prefix('backend')->name('backend.')->middleware([])->group(function(){
-    Route::get('dashboard', function () {
-        return view('backend.dashboard');
-    })->name('dashboard.index');
+Route::prefix('backend')
+->name('backend.')
+->namespace('Backend')
+->middleware([])
+->group(function(){
+    // Route::get('dashboard', 'DashboardController@index')
+    // ->name('dashboard.index');
 
     Route::prefix('categories')->name('categories.')->group(function(){
         Route::get('/list', function () {
@@ -50,52 +59,21 @@ Route::prefix('backend')->name('backend.')->middleware([])->group(function(){
             return view('backend categories delete');
         })->name('delete');
     });
+    //Dashboard
+    Route::resource('/dashboard', DashboardController::class);
+    //Post
+    Route::resource('posts', PostController::class)->only([
+        'index', 'store', 'create','update'
+    ])->names([
+        'create' => 'posts.add'
+    ])->parameters([
+        'posts' => 'posts_id'
+    ]);
+    //
+    Route::resource('users', UserController::class);
     
-    Route::prefix('users')->name('users.')->group(function(){
-        Route::get('/list', function () {
-            return view('backend.users.index');
-        })->name('index');
-        Route::get('/(id)', function ($id) {
-            return view('backend.users.show ');
-        })->name('show');
-        Route::get('/create', function () {
-            return view('backend.users.create');
-        })->name('create');
-        Route::post('/store', function () {
-            return redirect()->route('backend.users.index');
-        })->name('store');
-        Route::get('/edit', function () {
-            return view('backend.users.edit');
-        })->name('edit');
-        Route::put('/update/(id)', function ($id) {
-            return redirect()->route('backend.users.index');
-        })->name('update');
-        Route::get('/delete', function () {
-            return view('backend users delete');
-        })->name('delete');
-    });
-    
-    Route::prefix('posts')->name('posts.')->group(function(){
-        Route::get('/list', function () {
-            return view('backend.posts.index');
-        })->name('index');
-        Route::get('/(id)', function ($id) {
-            return view('backend.posts.show ');
-        })->name('show');
-        Route::get('/create', function () {
-            return view('backend.posts.create');
-        })->name('create');
-        Route::post('/store', function () {
-            return redirect()->route('backend.posts.index');
-        })->name('store');
-        Route::get('/edit', function () {
-            return view('backend.posts.edit');
-        })->name('edit');
-        Route::put('/update/(id)', function ($id) {
-            return redirect()->route('backend.posts.index');
-        })->name('update');
-        Route::get('/delete', function () {
-            return view('backend posts delete');
-        })->name('delete');
-    });
+//    Route::resources([
+//        'posts'=> PostController::class,
+//     //    'users'=> UserController::class,
+//    ]);
 });

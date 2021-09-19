@@ -1,5 +1,5 @@
 <div class="card-body">
-  <textarea id="summernote">
+  <textarea id="summernote" rows="10" name="content">
       Place <em>some</em> <u>text</u> <strong>here</strong>
   </textarea>
 </div>

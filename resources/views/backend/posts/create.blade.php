@@ -22,18 +22,65 @@
   <!-- Small boxes (Stat box) -->
   <div class="row">
     <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-            <h3>Tiêu đề</h3>
-            <input type="text" placeholder="Nhập tên...." style="width:100%">
+        <div class="card card-warning">
+          <form action="{{route('backend.posts.store')}}" method="post">
+          @csrf
+          <div class="card-body">
+              <div class="row">
+                <div class="col-sm-12">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>Tiêu đề</label>
+                    <input type="text" name="title" class="form-control" placeholder="Enter ...">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <!-- textarea -->
+                 @include('backend.components.summernote')
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <!-- select -->
+                  <div class="form-group">
+                    <label>Danh mục</label>
+                    <select class="form-control">
+                      <option>option 1</option>
+                      <option>option 2</option>
+                      <option>option 3</option>
+                      <option>option 4</option>
+                      <option>option 5</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <!-- select -->
+                  <div class="form-group">
+                    <label>Trạng thái</label>
+                    <select class="form-control">
+                      <option>option 1</option>
+                      <option>option 2</option>
+                      <option>option 3</option>
+                      <option>option 4</option>
+                      <option>option 5</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-success">Lưu</button>
+                <button type="submit" class="btn btn-default float-right">Hủy bỏ</button>
+              </div>
+          </div>
+        </form>
+          <!-- /.card-body -->
         </div>
-        @include('backend.components.summernote')
-        <!-- /.card-header -->
-        <button type="button" class="btn btn-success" style="width:10%;">Lưu</button>
-      </div>
       <!-- /.card -->
-    </div>
+      </div>
   </div>
+  
   
 </div><!-- /.container-fluid -->
 @endsection
