@@ -72,7 +72,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect('backend/posts');
     }
 
     /**
