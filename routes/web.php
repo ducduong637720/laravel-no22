@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\HomeController;
-use \App\Http\Controllers\DashboardController
+use \App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
