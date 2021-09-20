@@ -32,7 +32,7 @@ Route::get('/posts/show', function () {
 
 Route::prefix('backend')
 ->name('backend.')
-->namespace('Backend')
+->namespace('Admin')
 ->middleware([])
 ->group(function(){
     // Route::get('dashboard', 'DashboardController@index')
