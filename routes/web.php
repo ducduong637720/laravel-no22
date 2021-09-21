@@ -32,35 +32,12 @@ Route::get('/posts/show', function () {
 
 Route::prefix('backend')
 ->name('backend.')
-->namespace('Admin')
+->namespace('Backend')
 ->middleware([])
 ->group(function(){
     // Route::get('dashboard', 'DashboardController@index')
     // ->name('dashboard.index');
 
-    Route::prefix('categories')->name('categories.')->group(function(){
-        Route::get('/list', function () {
-            return view('backend categories list');
-        })->name('list');
-        Route::get('/(id)', function ($id) {
-            return view('backend show categories ');
-        })->name('show');
-        Route::get('/create', function () {
-            return view('create');
-        })->name('create');
-        Route::post('/store', function () {
-            return redirect()->route('backend.categories.index');
-        })->name('store');
-        Route::get('/edit/(id)', function ($id) {
-            return view('edit');
-        })->name('edit');
-        Route::put('/update/(id)', function ($id) {
-            return redirect()->route('backend.categories.index');
-        })->name('update');
-        Route::get('/delete', function () {
-            return view('backend categories delete');
-        })->name('delete');
-    });
     //Dashboard
     Route::resource('/dashboard', DashboardController::class);
     //Post
@@ -71,9 +48,10 @@ Route::prefix('backend')
     ])->parameters([
         'posts' => 'posts_id'
     ]);
-    //
+    //User
     Route::resource('users', UserController::class);
-    
+    //Category
+    Route::resource('categories', CategoryController::class);
 //    Route::resources([
 //        'posts'=> PostController::class,
 //     //    'users'=> UserController::class,
