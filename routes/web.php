@@ -42,7 +42,7 @@ Route::prefix('backend')
     Route::resource('/dashboard', DashboardController::class);
     //Post
     Route::resource('posts', PostController::class)->only([
-        'index', 'store', 'create','update'
+        'index', 'store', 'create','update','edit'
     ])->names([
         'create' => 'posts.add'
     ])->parameters([

@@ -63,7 +63,7 @@
                 <td>John Doe</td>
                 <td>11-7-2014</td>
                 <td>
-                  <a href="{{ route('backend.posts.update', 1) }}" class="btn btn-outline-info"><i class="far fa-edit"></i></a>
+                  <a href="{{ route('backend.posts.edit', ['posts_id'=>'1']) }}" class="btn btn-outline-info"><i class="far fa-edit"></i></a>
                   <a href="" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></a>  
                 </td>                
               </tr>

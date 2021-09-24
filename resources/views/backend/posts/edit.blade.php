@@ -6,7 +6,7 @@
 <div class="container-fluid">
   <div class="row mb-2">
     <div class="col-sm-6">
-      <h1 class="m-0">Tạo bài viết</h1>
+      <h1 class="m-0">edit bài viết</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
       <ol class="breadcrumb float-sm-right">
@@ -23,7 +23,7 @@
   <div class="row">
     <div class="col-12">
         <div class="card card-warning">
-           <form class="form-horizontal" method="POST" action="{{ route('backend.posts.update', 1) }}">
+           <form class="form-horizontal" method="POST" action="{{ route('backend.posts.update', ['posts_id'=>'1']) }}">
             @method('PUT')
             @csrf
           <div class="card-body">
@@ -71,8 +71,8 @@
                 </div>
               </div>
               <div class="card-footer">
-                <button type="submit" class="btn btn-success">Lưu</button>
-                <button type="submit" class="btn btn-default float-right">Hủy bỏ</button>
+                <button type="submit" class="btn btn-success">Update</button>
+            
               </div>
           </div>
         </form>

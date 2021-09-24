@@ -60,7 +60,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        // echo 'edit';
+        
+        return view('backend.posts.edit');
     }
 
     /**
